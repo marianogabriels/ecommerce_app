@@ -7,17 +7,10 @@ class ProductTest < ActiveSupport::TestCase
   # end
 
 
-#  def nuevo_producto(atributo_que_falla: valor)
-#    help = lambda { atributo_que_falla ||= 
-#    Product.new(
-#      atributo_que_falla: valor
-#    )
-#  end
-
-  def new_product(*image_url)
+  def new_product(image_url)
     Product.new(title:      "My Book Title",
-               description:  "yyy",
-               price:        1,
+               description:  "yfffffffjijiffyy",
+               price:        1.00,
                image_url:    image_url)
   end
 
@@ -26,16 +19,15 @@ class ProductTest < ActiveSupport::TestCase
     ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg
               http://a.b.c/x/y/z/fred.gif }
     bad = %w{ fred.doc fred.gif/mode fred.gif.mode }
-    ok.each do |name|
-      assert new_product(name).valid?, "#{name} shouldn't be invalid"
+
+    ok.each do |img_name|
+      assert new_product(img_name).valid?, "#{img_name} should be valid"
     end
 
-    bad.each do |name|
-      assert new_product(name).invalid?, "#{name} shouldn't be valid"
+    bad.each do |img_name|
+      assert new_product(img_name).invalid?, "#{img_name} shouldn't be valid"
     end
   end
-
-  
 
   test "los atributos no deben estar vacios" do
   product = Product.new
@@ -64,8 +56,20 @@ class ProductTest < ActiveSupport::TestCase
     product.price = 1
     assert product.valid?
   end
+  test "product is not valid without a unique title" do
+    product = Product.new(title:
+    products(:ruby).title,
+    description: "yyy",
+    price:
+    1,
+    image_url:
+    "fred.gif")
+    assert !product.save
+    assert_equal "has already been taken", product.errors[:title].join('; ')
+  end
 
-  test "el producto no es valido, si posee un titulo existente i18n " do
+
+  test "el producto no es valido, si posee un titulo existente(uniqueness) i18n internacionalizado " do
     product = Product.new(title: products(:ruby).title,
                           description: "yyy",
                           price: 1,
