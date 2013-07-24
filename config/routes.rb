@@ -1,4 +1,4 @@
-Depot::Application.routes.draw do
+EcommerceSample::Application.routes.draw do
   resources :products
 
 

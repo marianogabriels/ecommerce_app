@@ -6,12 +6,21 @@ class ProductTest < ActiveSupport::TestCase
   #   assert true
   # end
 
-  def new_product(image_url)
+
+#  def nuevo_producto(atributo_que_falla: valor)
+#    help = lambda { atributo_que_falla ||= 
+#    Product.new(
+#      atributo_que_falla: valor
+#    )
+#  end
+
+  def new_product(*image_url)
     Product.new(title:      "My Book Title",
                description:  "yyy",
                price:        1,
                image_url:    image_url)
   end
+
 
   test "image url" do
     ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg
@@ -25,6 +34,8 @@ class ProductTest < ActiveSupport::TestCase
       assert new_product(name).invalid?, "#{name} shouldn't be valid"
     end
   end
+
+  
 
   test "los atributos no deben estar vacios" do
   product = Product.new
