@@ -1,0 +1,28 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+
+
+<h1> Your Pragmatic Catalog </h1>
+
+
+<div class="row">
+<% @products.each_slice(3) do |product_grup| %>
+  <ul class="thumbnails">
+    <% product_grup.each do |product| %>
+      <div class="span3 ">
+          <%= image_tag(product.image_url, data_src: "holder.js/300x200") %>
+          <div class="caption">
+            <h3> <%= product.title %></h3>
+             <%= sanitize(product.description) %>
+             <p>
+               <%= link_to "Add to cart",text="comprar", class:"btn btn-primary" %> 
+               <%= link_to product.price, text="add_to_cart", class:"btn" %>
+             </p>
+          </div>
+      </div>
+      <% end %>
+    </ul>
+<% end %>
+</div>
