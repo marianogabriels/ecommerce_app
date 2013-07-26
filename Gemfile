@@ -14,6 +14,9 @@ gem 'sqlite3'
 group :development do
   gem "meta_request"
 end
+
+gem "twitter-bootstrap-rails"
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -25,7 +28,6 @@ group :assets do
 
   gem "therubyracer"
   gem "less-rails"
-  gem "twitter-bootstrap-rails"
 
 
 end
