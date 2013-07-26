@@ -21,6 +21,7 @@ group :development, :test do
   gem "rspec-rails"
   gem 'guard'
   gem 'guard-rspec'
+  gem 'capybara'
   #gem 'guard-spork'
   #gem 'spork'
   #gem 'spork-rails' , git: "https://github.com/sporkrb/spork-rails"
