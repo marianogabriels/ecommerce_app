@@ -14,8 +14,8 @@
             <h3> <%= product.title %></h3>
              <%= sanitize(product.description) %>
              <p>
-               <%= link_to "Add to cart",text="comprar", class:"btn btn-primary" %> 
-               <%= link_to product.price, text="add_to_cart", class:"btn" %>
+               <%= link_to "agregar al carro", text=line_items_path(product_id: product), class:"btn btn-primary" %> 
+               <%= link_to product.price, text="price", class:"btn" %>
              </p>
           </div>
       </div>
