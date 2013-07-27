@@ -8,4 +8,9 @@ describe "LineItems" do
       response.status.should be(200)
     end
   end
+
+  describe "creacion de item line" do
+  end
+
+
 end
