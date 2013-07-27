@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module EcommerceSample
+module EcommerceApp
   class Application < Rails::Application
 
     #config.action_controller.perform_caching = true

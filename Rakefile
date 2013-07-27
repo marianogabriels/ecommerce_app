@@ -4,7 +4,7 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-EcommerceSample::Application.load_tasks
+EcommerceApp::Application.load_tasks
 
 namespace :db do
   task :regenerate do
