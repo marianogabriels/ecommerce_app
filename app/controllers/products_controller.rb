@@ -44,9 +44,11 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+        flash[:success] = "Agregado con exito"
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
       else
+        flash[:error] = @product.errors.full_messages 
         format.html { render action: "new" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
