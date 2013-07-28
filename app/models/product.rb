@@ -19,9 +19,8 @@ class Product < ActiveRecord::Base
 
 
   private
-
   #se asegura de que el Producto no está asignado
-  # a ninguna linea de item
+  # a ninguna linea de item al momento de eliminarlo
   def ensure_not_referenced_by_any_line_item
     if line_items.empty?
       return true
