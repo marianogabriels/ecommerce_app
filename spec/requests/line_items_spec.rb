@@ -1,16 +1,20 @@
 require 'spec_helper'
 
-describe "LineItems" do
-  describe "GET /line_items" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get line_items_path
-      response.status.should be(200)
+describe "LineItems. " do
+    let(:product) { FactoryGirl.create(:product) }
+
+    describe "el store, cuando un usuario visita el index " do
+      before { visit store_index_path }
+      subject { page }
+      it { should have_content("Pragmatic") }
+      it { should have_selector( 'h1' ,  "Your Pragmatic Catalog") }
+      it { should have_title("EcommerceApp") }
+      it { should have_selector( 'h3' , product.title ) } 
+      it { should have_selector('h1') }
     end
-  end
 
-  describe "creacion de item line" do
-  end
-
-
+#    describe "agregar al carrito un producto" do
+#      before { click_button "agregar al carro" }
+#      it { should have_content('Line') }
+#    end
 end
